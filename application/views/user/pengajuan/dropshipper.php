@@ -21,12 +21,9 @@
         <div class="title pb-5">
           <h2>Syarat Menjadi Dropshipper</h2>
           <ol class="font-weight-light">
-            <li>bla bla bla bla bla bla bla bla bla bla bla bla</li>
-            <li>bla bla bla bla bla bla bla bla bla bla bla bla</li>
-            <li>bla bla bla bla bla bla bla bla bla bla bla bla</li>
-            <li>bla bla bla bla bla bla bla bla bla bla bla bla</li>
-            <li>bla bla bla bla bla bla bla bla bla bla bla bla</li>
-            <li>bla bla bla bla bla bla bla bla bla bla bla bla</li>
+            <?php foreach($syarat as $s){ ?>
+            <li><?= $s->syarat; ?></li>
+            <?php } ?>
           </ol>
         </div>
           <div class="form-row justify-content-center">

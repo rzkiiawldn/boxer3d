@@ -25,11 +25,8 @@
             </div>
             <div class="form-group col-md-12">
               <label for="upload">Upload Bukti (berupa video)</label>
-              <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="foto_bukti" required="">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-              </div>
-               <?= form_error('foto_bukti', '<small class="text-danger pl-3">', '</small>'); ?>
+                <input type="file" class="form-control" name="video" required="">
+               <?= form_error('video', '<small class="text-danger pl-3">', '</small>'); ?><br>
               <button type="submit" class="btn btn-primary float-right">Ajukan</button>
             </div>
 

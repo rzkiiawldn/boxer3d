@@ -46,7 +46,7 @@
                                 <!-- <input type="number" class="form-control" name="jumlah_barang" min="1" max="<?= $barang->stok_barang ?>" required/> -->
                                 <div class="input-group">
                                   <input type="button" value="-" class="button-minus" data-field="jumlah_barang">
-                                  <input type="number" step="1" max="<?= $barang->stok_barang ?>" value="1" name="jumlah_barang" class="quantity-field">
+                                  <input type="number" step="1" min="1" max="<?= $barang->stok_barang ?>" value="1" name="jumlah_barang" class="quantity-field">
                                   <input type="button" value="+" class="button-plus" data-field="jumlah_barang">
                                 </div>
                                 <?= form_error('jumlah_barang', '<small class="text-danger pl-3">', '</small>'); ?>

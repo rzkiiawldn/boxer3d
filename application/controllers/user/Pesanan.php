@@ -123,6 +123,7 @@ class Pesanan extends CI_Controller
                 redirect('user/pesanan/riwayat_pesanan');
             }
         }
+        $this->db->set('status', 2);
         $this->db->where('id_pesanan', $id_pesanan);
         $this->db->update('pesanan');
         $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Upload bukti berhasil, pesanan segera diproses</div>');

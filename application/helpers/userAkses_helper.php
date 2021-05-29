@@ -13,13 +13,14 @@ function belum_login()
 
         $menu       = $ci->uri->segment(1);
 
-        $queryAkses    = $ci->db->get_where('user', [
-            'role'      => $menu
+        $queryAksesMenu    = $ci->db->get_where('user_akses_menu', [
+            'role'         => $role,
+            'role_akses'   => $menu
         ]);
 
         // lalu di cek kembali, jika user akses ada datanya maka jalankan
         // jika tidak ada atau < 1, maka arahkann ke halaman blocked
-        if ($queryAkses->num_rows() < 1) {
+        if ($queryAksesMenu->num_rows() < 1) {
             redirect('auth/blocked');
         }
     }

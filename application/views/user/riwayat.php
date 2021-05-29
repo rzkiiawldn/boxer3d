@@ -40,9 +40,9 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->tanggal_pesanan; ?></td>
                                     <td>
-                                        <?php if($row->status == 0) {
+                                        <?php if($row->status == 1) {
                                             echo 'Sudah dipesan & belum bayar';
-                                        } elseif ($row->status == 1) {
+                                        } elseif ($row->status == 2) {
                                             echo 'Sudah bayar';
                                         } else {
                                             echo "transaksi selesai";
@@ -92,9 +92,9 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->tanggal_pesanan; ?></td>
                                     <td>
-                                        <?php if($row->status == 0) {
+                                        <?php if($row->status == 1) {
                                             echo 'Sudah dipesan & belum bayar';
-                                        } elseif ($row->status == 1) {
+                                        } elseif ($row->status == 2) {
                                             echo 'Sudah bayar';
                                         } else {
                                             echo "transaksi selesai";
@@ -143,9 +143,9 @@
                                     <td><?= $no++; ?></td>
                                     <td><?= $row->tanggal_pesanan; ?></td>
                                     <td>
-                                        <?php if($row->status == 0) {
+                                        <?php if($row->status == 1) {
                                             echo 'Sudah dipesan & belum bayar';
-                                        } elseif ($row->status == 1) {
+                                        } elseif ($row->status == 2) {
                                             echo 'Sudah bayar';
                                         } else {
                                             echo "transaksi selesai";
@@ -222,7 +222,7 @@
                         <div class="form-group">
                             <img src="<?= base_url('assets/bukti_pembayaran/' . $row->bukti_pembayaran) ?>" class="img img-fluid" alt="">
                         </div>
-                        <?php if ($row->status != 1) { ?>
+                        <?php if ($row->status != 2) { ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

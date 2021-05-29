@@ -44,7 +44,8 @@ class Barang extends CI_Controller
                     'tanggal_pesanan'   => date('Y-m-d'),
                     'status'    		=> 0,
                     'kode_bayar'      	=> mt_rand(100, 499),
-                    'total_harga'      	=> 0
+                    'total_harga'      	=> 0,
+                    'total_pesanan'     => 0,
                 ];
                 $this->db->insert('pesanan', $data);
             }
@@ -52,30 +53,8 @@ class Barang extends CI_Controller
             $pesanan_baru = $this->db->get_where('pesanan', ['user_id' => $user->id_user, 'status' => 0])->row();
             $cek_pesanan_detail = $this->db->get_where('pesanan_detail', ['barang_id' => $barang->id_barang, 'pesanan_id' => $pesanan_baru->id_pesanan])->row();
 
-            if ($jumlah_barang >= 20) {
-                if (empty($cek_pesanan_detail)) {
-                $data = [
-                    'barang_id'     => $barang->id_barang,
-                    'pesanan_id'    => $pesanan_baru->id_pesanan,
-                    'jumlah_barang' => $jumlah_barang,
-                    'jumlah_harga'  => 18500 * $jumlah_barang
-                ];
-                $this->db->insert('pesanan_detail', $data);
-                } else {
-                    $pesanan_detail         = $this->db->get_where('pesanan_detail', ['barang_id' => $barang->id_barang, 'pesanan_id' => $pesanan_baru->id_pesanan])->row();
-                    $this->db->set('jumlah_barang', $pesanan_detail->jumlah_barang + $jumlah_barang);
-                    $this->db->set('jumlah_harga', $pesanan_detail->jumlah_harga + 18500 * $jumlah_barang);
-                    $this->db->where('barang_id', $pesanan_detail->barang_id);
-                    $this->db->update('pesanan_detail');
-                }
+ 
 
-                // jumlah
-                $pesanan        = $this->db->get_where('pesanan', ['user_id' => $user->id_user, 'status' => 0])->row();
-                $this->db->set('total_harga', $pesanan->total_harga + 18500 * $jumlah_barang);
-                $this->db->where('id_pesanan', $pesanan->id_pesanan);
-                $this->db->update('pesanan');
-
-            } else {
                 if (empty($cek_pesanan_detail)) {
                     $data = [
                         'barang_id'     => $barang->id_barang,
@@ -94,10 +73,18 @@ class Barang extends CI_Controller
 
                 // jumlah
                 $pesanan        = $this->db->get_where('pesanan', ['user_id' => $user->id_user, 'status' => 0])->row();
-                $this->db->set('total_harga', $pesanan->total_harga + $barang->harga_barang * $jumlah_barang);
-                $this->db->where('id_pesanan', $pesanan->id_pesanan);
-                $this->db->update('pesanan');
-            }
+                if($pesanan->total_pesanan + $jumlah_barang >= 20) {
+                    $total_all = $pesanan->total_pesanan + $jumlah_barang;
+                    $this->db->set('total_harga', 18500 * $total_all);
+                    $this->db->set('total_pesanan', $total_all);
+                    $this->db->where('id_pesanan', $pesanan->id_pesanan);
+                    $this->db->update('pesanan');
+                } else {                    
+                    $this->db->set('total_harga', $pesanan->total_harga + $barang->harga_barang * $jumlah_barang);
+                    $this->db->set('total_pesanan', $pesanan->total_pesanan + $jumlah_barang);
+                    $this->db->where('id_pesanan', $pesanan->id_pesanan);
+                    $this->db->update('pesanan');
+                }
 
             redirect('user/pesanan/keranjang');
         }

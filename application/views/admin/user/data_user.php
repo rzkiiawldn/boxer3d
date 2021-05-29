@@ -1,6 +1,11 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800"><?= $judul; ?></h1>
+   <div class="row">
+        <div class="col">
+            <?= $this->session->flashdata('pesan'); ?>
+        </div>
+    </div>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -14,9 +19,7 @@
                         <th>Email</th>
                         <th>No Telp</th>
                         <th>Alamat</th>
-                        <th>Kecamatan</th>
-                        <th>Kode Pos</th>
-                        <th width="10%">Aksi</th>
+                        <th width="15%">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,11 +30,10 @@
                         <td><?= $row->email; ?></td>
                         <td><?= $row->no_tlp; ?></td>
                         <td><?= $row->alamat; ?></td>
-                        <td><?= $row->kecamatan; ?></td>
-                        <td><?= $row->kode_pos; ?></td>
                         <td>
-                            <a href="" class="btn btn-sm btn-success"><i class="fas fa-pen"></i></a>
-                            <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>                            
+                            <a href="<?= base_url('admin/user/detail/'.$row->id_user); ?>" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                            <a href="<?= base_url('admin/user/edit_user/'.$row->id_user); ?>" class="btn btn-sm btn-success"><i class="fas fa-pen"></i></a>
+                            <a href="<?= base_url('admin/user/hapus_user/'.$row->id_user); ?>" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin ingin menghapus ?')"><i class="fas fa-trash"></i></a>                            
                         </td>
                     </tr>
                 <?php endforeach; ?>

@@ -60,7 +60,7 @@ class Berita extends CI_Controller
                 'foto_berita'       => $foto_berita
             ];
             $this->db->insert('berita', $data);
-            redirect('admin/berita/index');
+            redirect('admin/berita');
         }
 	}
 

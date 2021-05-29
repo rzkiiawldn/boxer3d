@@ -42,24 +42,28 @@
                         <textarea style="font-size: 14px;" rea name="alamat" id="alamat" cols="20" rows="6" required class="form-control"><?= $user['alamat']; ?></textarea>
                         <?= form_error('alamat', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <!-- <div class="form-group row">
-                        <label class="col-sm-3 col-form-label font-weight-bold" for="tanggal_lahir">Foto Profil</label>
-                        <div class="col-sm-9">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <img src="<?= base_url('assets/user/img/profil/' . $user['foto']); ?>" class="img-thumbnail">
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="custom-file">
-                                        <input type="file" name="foto" class="custom-file-input">
-                                        <label class="custom-file-label" for="custom-file">Choose file</label>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">                            
+                            <div class="form-group">
+                                <label for="" class="font-weight-bold">Kecamatan</label>
+                                <input style="font-size: 14px;" type="text" class="form-control" name="kecamatan" value="<?= $user['kecamatan'] ?>" />
+                                <?= form_error('kecamatan', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
-                    </div> -->
+                        <div class="col-md-6">                            
+                            <div class="form-group">
+                                <label for="" class="font-weight-bold">Kode Pos</label>
+                                <input style="font-size: 14px;" type="text" class="form-control" name="kode_pos" value="<?= $user['kode_pos'] ?>" />
+                                <?= form_error('kode_pos', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <hr><p style="font-size:12px;color: red;">kosongkan jika tidak diganti</p>
+                    <div class="form-group">
+                        <label for="" class="font-weight-bold">Password Baru</label>
+                        <input style="font-size: 14px;" type="password" class="form-control" name="password" />
+                    </div>
                     <button type="submit" class="btn text-white float-right" style="background-color: #2a2c39;">Edit</button>
-                    <a href="<?= base_url('user/profil/edit_password') ?>" class="btn text-white float-right mr-2" style="background-color: darkorange;">Edit Password</a>
                 </form>
 
             </div>

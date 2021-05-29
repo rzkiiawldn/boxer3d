@@ -1,6 +1,11 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800"><?= $judul; ?></h1>
+   <div class="row">
+        <div class="col">
+            <?= $this->session->flashdata('pesan'); ?>
+        </div>
+    </div>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">

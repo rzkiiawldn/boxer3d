@@ -7,6 +7,11 @@
         <a href="<?= base_url('admin/event/tambah_event'); ?>" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Tambah Event</a>
     </div>
 </div>
+   <div class="row">
+        <div class="col">
+            <?= $this->session->flashdata('pesan'); ?>
+        </div>
+    </div>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">

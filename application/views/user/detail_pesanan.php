@@ -71,11 +71,7 @@
                                     <td><img src="<?= base_url('assets/barang/'.$row->foto_barang); ?>" width="100px"></td>
                                     <td><?= $row->nama_motif; ?></td>
                                     <td><?= $row->jumlah_barang; ?> Brg</td>
-                                    <?php if($row->jumlah_barang >= 20) { ?>
-                                    <td>Rp. <s><?= number_format($row->harga_barang); ?></s> <?= number_format(18500); ?></td>
-                                    <?php } else { ?>
                                     <td>Rp. <?= number_format($row->harga_barang); ?></td>
-                                    <?php } ?>
                                     <td>Rp. <?= number_format($row->jumlah_harga); ?></td>
                                 </tr>
                             <?php } ?>
@@ -146,7 +142,7 @@
                         <div class="form-group">
                             <img src="<?= base_url('assets/bukti_pembayaran/' . $pesanan->bukti_pembayaran) ?>" class="img img-fluid" alt="">
                         </div>
-                        <?php if ($pesanan->status != 1) { ?>
+                        <?php if ($pesanan->status != 2) { ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

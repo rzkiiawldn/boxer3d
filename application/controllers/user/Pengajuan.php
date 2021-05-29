@@ -15,7 +15,8 @@ class Pengajuan extends CI_Controller
 		$data = [
 			'judul'		=> 'Pengajuan Reseller',
 			'user'      => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
-            'pengajuan' => $this->db->query("SELECT * FROM pengajuan JOIN user ON pengajuan.user_id = user.id_user WHERE role_id = 2 AND user_id = $user->id_user AND user.reseller = 0")->row()
+            'pengajuan' => $this->db->query("SELECT * FROM pengajuan JOIN user ON pengajuan.user_id = user.id_user WHERE role_id = 2 AND user_id = $user->id_user AND user.reseller = 0")->row(),
+            'syarat'    => $this->db->get_where('syarat', ['role_id' => 3])->result()
 		];
 
 			$this->load->view('template/user_header', $data);
@@ -56,7 +57,8 @@ class Pengajuan extends CI_Controller
         $data = [
             'judul'     => 'Pengajuan Dropshipper',
             'user'      => $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array(),
-            'pengajuan' => $this->db->query("SELECT * FROM pengajuan JOIN user ON pengajuan.user_id = user.id_user WHERE role_id = 1 AND user_id = $user->id_user AND user.dropship = 0")->row()
+            'pengajuan' => $this->db->query("SELECT * FROM pengajuan JOIN user ON pengajuan.user_id = user.id_user WHERE role_id = 1 AND user_id = $user->id_user AND user.dropship = 0")->row(),
+            'syarat'    => $this->db->get_where('syarat', ['role_id' => 3])->result()
         ];
 
 			$this->load->view('template/user_header', $data);

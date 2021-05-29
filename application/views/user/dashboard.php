@@ -30,6 +30,30 @@
 
 <main id="main">
 
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+            <div class="section-title" data-aos="zoom-out">
+                <h2>About</h2>
+                <p>About Us</p>
+            </div>
+
+            <div class="row content" data-aos="fade-up">
+                <?php foreach ($about as $data) { ?>
+                    <div class="col-md-7">
+                        <p><?= nl2br($data->about); ?></p>
+                    </div>
+                    <div class="col-md-5">
+                        <p>Alamat : <?= $data->alamat; ?></p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3560484560307!2d106.69371501476903!3d-6.216689195499747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f9ff7714ffd1%3A0xf38f3824157c2aec!2sDaster%20Sambung%203D!5e0!3m2!1sid!2sid!4v1622170659088!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                <?php } ?>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
     <section id="team" class="team">
         <div class="container">
             <div class="section-title" data-aos="zoom-out">
@@ -40,16 +64,16 @@
             <?php } else { ?>
                 <div class="row" data-aos="zoom-out">
                     <?php foreach ($barang as $brg) { ?>
-                        <div class="col-md-4 d-flex justify-content-center">
-                          <div class="card" style="width: 18rem;">
-                            <img src="<?= base_url('assets/barang/'. $brg->foto_barang); ?>" class="card-img-top" alt="..." style="height: 15rem">          
-                            <div class="card-body">
-                              <h5 class="card-title"><?= $brg->nama_motif; ?></h5>
-                              <p class="card-text" style="font-size: 16px;color:chocolate"><b>Rp. <?= number_format($brg->harga_barang, 0, ',', '.'); ?></b></p>
-                              <p class="card-text" style="font-size: 14px;"><?= $brg->stok_barang; ?> Pcs</p>
-                              <a href="<?= base_url('user/barang/index/' . $brg->id_barang) ?>" class="btn btn-sm text-white float-right" style="background-color: #2a2c39;">Pesan</a>
+                        <div class="col-md-4 d-flex justify-content-center mb-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src="<?= base_url('assets/barang/' . $brg->foto_barang); ?>" class="card-img-top" alt="..." style="height: 15rem">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $brg->nama_motif; ?></h5>
+                                    <p class="card-text" style="font-size: 16px;color:chocolate"><b>Rp. <?= number_format($brg->harga_barang, 0, ',', '.'); ?></b></p>
+                                    <p class="card-text" style="font-size: 14px;"><?= $brg->stok_barang; ?> Pcs</p>
+                                    <a href="<?= base_url('user/barang/index/' . $brg->id_barang) ?>" class="btn btn-sm text-white float-right" style="background-color: #2a2c39;">Pesan</a>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     <?php } ?>
                 </div>
